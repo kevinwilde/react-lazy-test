@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const LazyComponent = React.lazy(() => import('./LazyComponent'))
+
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <React.Suspense fallback={<div>loading...</div>}>
+          <LazyComponent />
+        </React.Suspense>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
